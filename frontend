@@ -1,18 +1,11 @@
 // src/App.jsx
-import React, { useRef } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 
-/*
-  AlgoNova — Homepage (single file)
-  - Hero (animated gradient text)
-  - Single Live Demo (glass card) using local /public/algonova-demo.mp4 or YouTube embed
-  - Features, Analytics placeholders
-  - Movable draggable Tabs (dashboard / algorithms / settings / wallet)
-  - Pricing, Contact, Footer
-*/
-
 const SectionTitle = ({ children }) => (
-  <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">{children}</h2>
+  <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-pink-500 to-purple-400">
+    {children}
+  </h2>
 );
 
 const scrollTo = (id) => {
@@ -21,229 +14,213 @@ const scrollTo = (id) => {
 };
 
 export default function App() {
-  const tabsParent = useRef(null);
-
   return (
-    <div className="bg-gradient-to-br from-indigo-950 via-black to-black text-slate-100 min-h-screen antialiased">
+    <div className="relative min-h-screen bg-gradient-to-b from-black via-slate-950 to-black text-white font-inter">
       {/* Floating glows */}
       <motion.div
         aria-hidden
-        className="pointer-events-none fixed -left-16 top-16 w-72 h-72 rounded-full bg-gradient-to-br from-indigo-600 to-pink-500 opacity-10 blur-3xl"
-        animate={{ y: [0, -18, 0], x: [0, 10, 0] }}
+        className="pointer-events-none fixed -left-20 -top-10 w-80 h-80 rounded-full bg-gradient-to-br from-indigo-600 to-pink-500 opacity-20 blur-3xl"
+        animate={{ y: [0, -20, 0], x: [0, 10, 0] }}
         transition={{ duration: 12, repeat: Infinity }}
       />
       <motion.div
         aria-hidden
-        className="pointer-events-none fixed right-8 bottom-8 w-64 h-64 rounded-full bg-gradient-to-br from-cyan-400 to-purple-500 opacity-10 blur-3xl"
-        animate={{ y: [0, 18, 0], x: [0, -10, 0] }}
-        transition={{ duration: 11, repeat: Infinity }}
+        className="pointer-events-none fixed right-0 bottom-0 w-72 h-72 rounded-full bg-gradient-to-br from-cyan-400 to-purple-500 opacity-20 blur-3xl"
+        animate={{ y: [0, 15, 0], x: [0, -10, 0] }}
+        transition={{ duration: 10, repeat: Infinity }}
       />
 
-      {/* NAV */}
+      {/* NAVIGATION */}
       <header className="fixed w-full top-4 z-40">
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+        <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-indigo-500 to-pink-500 flex items-center justify-center text-black font-bold">AN</div>
+            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-indigo-500 to-pink-500 flex items-center justify-center text-black font-bold">
+              AN
+            </div>
             <div>
-              <div className="font-semibold">AlgoNova</div>
-              <div className="text-xs text-slate-400">Smarter Transactions. Intelligent Insights.</div>
+              <div className="font-semibold text-lg">AlgoNova</div>
+              <div className="text-xs text-slate-400">
+                Smarter Transactions. Intelligent Insights.
+              </div>
             </div>
           </div>
-          <div className="hidden md:flex items-center gap-6">
-            <button onClick={() => scrollTo("home")} className="text-slate-300 hover:text-white">Home</button>
-            <button onClick={() => scrollTo("features")} className="text-slate-300 hover:text-white">Features</button>
-            <button onClick={() => scrollTo("demo")} className="text-slate-300 hover:text-white">Demo</button>
-            <button onClick={() => scrollTo("pricing")} className="text-slate-300 hover:text-white">Pricing</button>
-            <button onClick={() => scrollTo("contact")} className="text-slate-300 hover:text-white">Contact</button>
-            <a href="#cta" className="px-4 py-2 rounded-lg bg-gradient-to-r from-indigo-600 to-pink-500 text-black font-medium">Get Started</a>
+          <div className="hidden md:flex items-center gap-6 text-sm">
+            <button onClick={() => scrollTo("home")} className="hover:text-pink-400">Home</button>
+            <button onClick={() => scrollTo("demo")} className="hover:text-pink-400">Demo</button>
+            <button onClick={() => scrollTo("features")} className="hover:text-pink-400">Features</button>
+            <button onClick={() => scrollTo("pricing")} className="hover:text-pink-400">Pricing</button>
+            <button onClick={() => scrollTo("contact")} className="hover:text-pink-400">Contact</button>
+            <a href="#cta" className="px-4 py-2 rounded-lg bg-gradient-to-r from-indigo-600 to-pink-500 text-black font-semibold">
+              Get Started
+            </a>
           </div>
-        </div>
+        </nav>
       </header>
 
       {/* HERO */}
-      <main>
-        <section id="home" className="min-h-screen flex items-center justify-center text-center pt-20 pb-24 px-6">
-          <div className="max-w-4xl mx-auto">
-            <motion.h1 initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight">
-              <span className="bg-clip-text text-transparent gradient-text">AlgoNova</span>
-              <br />
-              <span className="text-slate-200">Smarter Transactions. Intelligent Insights.</span>
-            </motion.h1>
+      <section id="home" className="min-h-screen flex flex-col justify-center items-center text-center px-6">
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="text-5xl md:text-7xl font-extrabold leading-tight"
+        >
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-pink-500 to-purple-400">
+            Welcome to AlgoNova
+          </span>
+        </motion.h1>
 
-            <motion.p className="mt-6 text-lg text-slate-300 max-w-2xl mx-auto">
-              Your AI-powered wallet: instant payments, cross-chain swaps, and automatic spending insights — all with bank-grade security.
-            </motion.p>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+          className="mt-6 text-lg text-slate-300 max-w-2xl"
+        >
+          The world’s first AI-driven wallet that turns your data into decisions.
+          Experience intelligent transactions, automated analytics, and seamless
+          cross-chain management — all in one futuristic app.
+        </motion.p>
 
-            <div className="mt-8 flex items-center justify-center gap-4">
-              <motion.button onClick={() => scrollTo("pricing")} whileHover={{ scale: 1.03 }} className="px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-pink-500 text-black font-semibold shadow-lg">Create Wallet</motion.button>
-              <motion.button onClick={() => scrollTo("demo")} whileHover={{ scale: 1.03 }} className="px-6 py-3 rounded-xl border border-slate-700 text-slate-200">Watch Demo</motion.button>
-            </div>
+        <div className="mt-8 flex gap-4">
+          <button
+            onClick={() => scrollTo("demo")}
+            className="px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-pink-500 text-black font-semibold"
+          >
+            Watch Demo
+          </button>
+          <button
+            onClick={() => scrollTo("pricing")}
+            className="px-6 py-3 rounded-xl border border-slate-700 text-slate-300 hover:text-white"
+          >
+            Get Started
+          </button>
+        </div>
+      </section>
 
-            <div className="mt-8 flex items-center justify-center gap-8 text-slate-300">
-              <div className="text-center">
-                <div className="text-white font-bold">10k+</div>
-                <div className="text-xs">Active users</div>
-              </div>
-              <div className="text-center">
-                <div className="text-white font-bold">$3.4M</div>
-                <div className="text-xs">Processed</div>
-              </div>
-              <div className="text-center">
-                <div className="text-white font-bold">99.99%</div>
-                <div className="text-xs">Uptime</div>
-              </div>
-            </div>
-          </div>
-        </section>
+      {/* LIVE DEMO SECTION */}
+      <motion.section
+        id="demo"
+        initial={{ opacity: 0, y: 60 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+        className="py-28 flex flex-col items-center justify-center bg-gradient-to-b from-transparent via-indigo-950/40 to-black/80 px-6"
+      >
+        <SectionTitle>See AlgoNova in Action</SectionTitle>
 
-        {/* LIVE DEMO - single authoritative section */}
-        <motion.section id="demo" initial={{ opacity: 0, y: 64 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.9 }} viewport={{ once: true }} className="py-24 px-6">
-          <div className="max-w-6xl mx-auto">
-            <div className="relative rounded-3xl p-6 md:p-10 backdrop-blur-md bg-white/4 border border-white/6 shadow-lg overflow-hidden">
-              <h3 className="text-3xl md:text-4xl font-extrabold text-center mb-6 bg-clip-text text-transparent gradient-text">See AlgoNova in Action</h3>
+        <div className="relative w-full max-w-5xl rounded-3xl overflow-hidden backdrop-blur-lg bg-white/5 border border-white/10 shadow-[0_0_40px_rgba(255,255,255,0.1)]">
+          <video
+            src="/algonova-demo.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            controls
+            className="w-full h-full object-cover"
+          />
+        </div>
 
-              {/* Video area: choose one of the two below */}
-              <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(0,0,0,0.6)]">
-                {/* Option A: Local thumbnail/video (recommended) */}
-                <video src="/algonova-demo.mp4" autoPlay muted loop playsInline controls className="w-full h-full object-cover" />
+        <p className="mt-10 text-center text-slate-300 text-lg max-w-2xl">
+          Watch how <span className="text-pink-400 font-semibold">AlgoNova</span> brings AI-driven intelligence to your transactions — visualize spending, automate decisions, and unlock insights instantly.
+        </p>
+      </motion.section>
 
-                {/* Option B: YouTube embed — uncomment if you prefer external hosting */}
-                {/*
-                <iframe className="w-full h-full" src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=0&mute=1&rel=0" title="AlgoNova Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
-                */}
-              </div>
-
-              <p className="mt-6 text-center text-slate-300 max-w-2xl mx-auto">
-                Quick walkthrough: payments, swaps, AI insights, secure backups — watch the flow in 45 seconds.
-              </p>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* FEATURES */}
-        <section id="features" className="py-20 px-6">
-          <SectionTitle>Key Features</SectionTitle>
-          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-            <article className="card-glass p-6 rounded-2xl">
-              <h4 className="text-xl font-semibold">Instant Transfers</h4>
-              <p className="text-slate-300 mt-2">Send and receive globally with low fees and instant settlement.</p>
-            </article>
-            <article className="card-glass p-6 rounded-2xl">
-              <h4 className="text-xl font-semibold">AI Expense Insights</h4>
-              <p className="text-slate-300 mt-2">Auto-categorization, savings recommendations, and projections.</p>
-            </article>
-            <article className="card-glass p-6 rounded-2xl">
-              <h4 className="text-xl font-semibold">Cross-Chain Aggregation</h4>
-              <p className="text-slate-300 mt-2">Aggregate balances and swap across chains in one unified wallet.</p>
-            </article>
-          </div>
-        </section>
-
-        {/* ANALYTICS (placeholder charts) */}
-        <section id="analytics" className="py-16 px-6 bg-black/50">
-          <SectionTitle>Analytics</SectionTitle>
-          <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
-            <div className="card-glass p-6 rounded-2xl text-center">
-              <div className="text-slate-400">Active Users</div>
-              <div className="text-3xl font-bold mt-3">14,230</div>
-            </div>
-            <div className="card-glass p-6 rounded-2xl text-center">
-              <div className="text-slate-400">Transactions (30d)</div>
-              <div className="text-3xl font-bold mt-3">$3.9M</div>
-            </div>
-            <div className="card-glass p-6 rounded-2xl text-center">
-              <div className="text-slate-400">Retention</div>
-              <div className="text-3xl font-bold mt-3">76%</div>
-            </div>
-          </div>
-        </section>
-
-        {/* MOVABLE TABS (interactive demo) */}
-        <section id="interactive-demo" className="py-20 px-6">
-          <SectionTitle>Interactive Demo — Movable Tabs</SectionTitle>
-          <div ref={tabsParent} className="max-w-6xl mx-auto h-72 relative border border-slate-800 rounded-2xl p-6 overflow-hidden bg-gradient-to-br from-transparent to-black/40">
-            <div className="absolute top-4 left-6 text-sm text-slate-400">Drag the panels around</div>
-
-            <motion.div drag dragConstraints={tabsParent} dragMomentum className="card-glass w-72 p-4 rounded-2xl absolute left-6 top-12">
-              <div className="flex items-center justify-between"><div className="font-semibold">Dashboard</div><div className="text-xs text-slate-400">Live</div></div>
-              <div className="mt-4 text-sm text-slate-300">Balance: <span className="font-bold">$12,482</span></div>
-              <div className="mt-4 flex gap-2"><button onClick={() => scrollTo("features")} className="text-xs px-3 py-1 rounded bg-indigo-600/80">Open Features</button></div>
+      {/* FEATURES */}
+      <section id="features" className="py-20 px-6">
+        <SectionTitle>Powerful Features</SectionTitle>
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+          {[
+            ["⚡", "Instant Transfers", "Send & receive funds globally with minimal fees and max speed."],
+            ["🤖", "AI Insights", "Smart categorization, predictions, and tailored financial suggestions."],
+            ["🌐", "Cross-Chain Wallet", "Manage BTC, ETH, and stablecoins seamlessly in one dashboard."],
+          ].map(([icon, title, text], i) => (
+            <motion.div
+              key={i}
+              whileHover={{ scale: 1.03 }}
+              className="p-6 rounded-2xl backdrop-blur-lg bg-white/5 border border-white/10 shadow hover:shadow-[0_0_30px_rgba(255,255,255,0.1)]"
+            >
+              <div className="text-3xl mb-4">{icon}</div>
+              <h3 className="text-xl font-semibold mb-2">{title}</h3>
+              <p className="text-slate-300">{text}</p>
             </motion.div>
+          ))}
+        </div>
+      </section>
 
-            <motion.div drag dragConstraints={tabsParent} dragMomentum className="card-glass w-64 p-4 rounded-2xl absolute right-6 top-8">
-              <div className="flex items-center justify-between"><div className="font-semibold">Algorithms</div><div className="text-xs text-slate-400">Beta</div></div>
-              <ul className="mt-3 text-sm text-slate-300 space-y-2"><li>• Auto-budget</li><li>• Smart-swap</li></ul>
+      {/* PRICING */}
+      <section id="pricing" className="py-20 px-6 bg-black/60">
+        <SectionTitle>Pricing Plans</SectionTitle>
+        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
+          {[
+            ["Starter", "Free", ["Basic wallet", "Standard analytics"]],
+            ["Pro", "$9.99/mo", ["AI insights", "Priority support"]],
+            ["Enterprise", "Custom", ["Dedicated AI", "Team dashboards"]],
+          ].map(([plan, price, features], i) => (
+            <motion.div
+              key={i}
+              whileHover={{ scale: 1.02 }}
+              className={`p-6 rounded-2xl border ${
+                i === 1
+                  ? "bg-gradient-to-br from-indigo-600 to-pink-500 text-black shadow-lg"
+                  : "bg-white/5 border-white/10"
+              }`}
+            >
+              <h3 className="text-xl font-semibold">{plan}</h3>
+              <p className="mt-2 text-3xl font-bold">{price}</p>
+              <ul className="mt-4 space-y-2 text-sm">
+                {features.map((f, j) => (
+                  <li key={j}>• {f}</li>
+                ))}
+              </ul>
+              <button className={`mt-6 w-full py-2 rounded-lg ${i === 1 ? "bg-black text-white" : "bg-gradient-to-r from-indigo-500 to-pink-500 text-black font-semibold"}`}>
+                {i === 2 ? "Contact Us" : "Get Started"}
+              </button>
             </motion.div>
+          ))}
+        </div>
+      </section>
 
-            <motion.div drag dragConstraints={tabsParent} dragMomentum className="card-glass w-60 p-4 rounded-2xl absolute left-40 bottom-8">
-              <div className="font-semibold">Settings</div>
-              <div className="mt-2 text-sm text-slate-300">Security: <span className="font-semibold">2FA</span></div>
-            </motion.div>
+      {/* CONTACT */}
+      <section id="contact" className="py-20 px-6">
+        <SectionTitle>Contact Us</SectionTitle>
+        <form
+          action="https://formspree.io/f/yourformid"
+          method="POST"
+          className="max-w-3xl mx-auto grid gap-4"
+        >
+          <input
+            name="name"
+            placeholder="Your Name"
+            required
+            className="p-3 rounded-lg bg-gray-900 border border-slate-700"
+          />
+          <input
+            name="email"
+            type="email"
+            placeholder="Your Email"
+            required
+            className="p-3 rounded-lg bg-gray-900 border border-slate-700"
+          />
+          <textarea
+            name="message"
+            rows="5"
+            placeholder="Your Message"
+            required
+            className="p-3 rounded-lg bg-gray-900 border border-slate-700"
+          />
+          <button
+            type="submit"
+            className="px-5 py-3 rounded-lg bg-gradient-to-r from-indigo-500 to-pink-500 text-black font-semibold"
+          >
+            Send Message
+          </button>
+        </form>
+      </section>
 
-            <motion.div drag dragConstraints={tabsParent} dragMomentum className="card-glass w-56 p-4 rounded-2xl absolute right-40 bottom-6">
-              <div className="font-semibold">Wallet</div>
-              <div className="mt-2 text-sm text-slate-300">Assets: BTC, ETH, USDT</div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* PRICING */}
-        <section id="pricing" className="py-20 px-6">
-          <SectionTitle>Pricing</SectionTitle>
-          <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
-            <div className="card-glass p-6 rounded-2xl">
-              <div className="text-xl font-semibold">Starter</div>
-              <div className="mt-2 text-3xl font-bold">Free</div>
-              <ul className="mt-4 text-slate-300 space-y-2"><li>• Basic wallet</li></ul>
-              <div className="mt-6"><button className="px-4 py-2 rounded bg-indigo-600/80">Create Wallet</button></div>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-gradient-to-br from-indigo-600 to-pink-500 text-black shadow-lg">
-              <div className="text-xl font-semibold">Pro</div>
-              <div className="mt-2 text-3xl font-bold">$9.99/mo</div>
-              <ul className="mt-4 space-y-2"><li>• Advanced insights</li></ul>
-              <div className="mt-6"><button className="px-4 py-2 rounded bg-black text-white">Get Pro</button></div>
-            </div>
-
-            <div className="card-glass p-6 rounded-2xl">
-              <div className="text-xl font-semibold">Enterprise</div>
-              <div className="mt-2 text-3xl font-bold">Contact</div>
-              <ul className="mt-4 text-slate-300 space-y-2"><li>• Custom integrations</li></ul>
-              <div className="mt-6"><button className="px-4 py-2 rounded border border-slate-700">Contact</button></div>
-            </div>
-          </div>
-        </section>
-
-        {/* CONTACT */}
-        <section id="contact" className="py-20 px-6 bg-black/60">
-          <SectionTitle>Contact</SectionTitle>
-          <div className="max-w-3xl mx-auto">
-            <form action="https://formspree.io/f/yourformid" method="POST" className="grid gap-4">
-              <input name="name" required placeholder="Name" className="p-3 rounded bg-gray-900 border border-slate-700" />
-              <input name="email" type="email" required placeholder="Email" className="p-3 rounded bg-gray-900 border border-slate-700" />
-              <textarea name="message" rows="5" required placeholder="Message" className="p-3 rounded bg-gray-900 border border-slate-700" />
-              <div className="flex items-center gap-4">
-                <button type="submit" className="px-5 py-3 rounded bg-gradient-to-r from-indigo-500 to-pink-500 text-black">Send Message</button>
-                <div className="text-sm text-slate-400">Or email us at <a href="mailto:hello@algonova.app" className="text-indigo-400">hello@algonova.app</a></div>
-              </div>
-            </form>
-          </div>
-        </section>
-
-        {/* CTA block */}
-        <section id="cta" className="py-12 px-6">
-          <div className="max-w-5xl mx-auto p-8 rounded-2xl bg-gradient-to-br from-indigo-700/20 to-pink-700/10 border border-white/6 text-center">
-            <h3 className="text-2xl font-bold">Ready to try AlgoNova?</h3>
-            <p className="mt-2 text-slate-300">Create your wallet and join thousands using smarter transactions.</p>
-            <div className="mt-4"><button className="px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-pink-500 text-black font-semibold">Create Wallet</button></div>
-          </div>
-        </section>
-
-        {/* FOOTER */}
-        <footer className="py-8 text-center text-slate-500 border-t border-slate-800">
-          © {new Date().getFullYear()} AlgoNova — Smarter Transactions. Intelligent Insights.
-        </footer>
-      </main>
+      {/* FOOTER */}
+      <footer className="py-8 text-center text-slate-500 border-t border-slate-800">
+        © {new Date().getFullYear()} AlgoNova — Smarter Transactions. Intelligent Insights.
+      </footer>
     </div>
   );
 }
